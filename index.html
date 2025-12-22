@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIT Global | Decentralized Financial Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2a4b8c;
+            --secondary: #00b894;
+            --accent: #6c5ce7;
+            --dark: #0d1530;
+            --light: #f8f9fa;
+            --gray: #e9ecef;
+            --text: #333;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+
+        body {
+            background-color: #f5f7fb;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            color: var(--secondary);
+            font-size: 28px;
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        nav a.active {
+            color: var(--secondary);
+        }
+
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.2);
+            color: white;
+        }
+
+        /* Page Content Container */
+        #page-content {
+            min-height: calc(100vh - 200px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a1029;
+            color: #aaa;
+            padding: 50px 0 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+        }
+
+        /* Common Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Warning & Danger Notes */
+        .warning-note {
+            background-color: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning-note p {
+            color: var(--warning);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .danger-note {
+            background-color: rgba(220, 53, 69, 0.1);
+            border-left: 4px solid var(--danger);
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .danger-note p {
+            color: var(--danger);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 184, 148, 0.5); }
+            50% { transform: scale(1.2); box-shadow: 0 0 20px rgba(0, 184, 148, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 0 10px rgba(0, 184, 148, 0.5); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Page Styles */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Home Page Styles */
+        .hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(42, 75, 140, 0.05) 0%, rgba(108, 92, 231, 0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero h1 span {
+            color: var(--secondary);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #555;
+            max-width: 600px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .blockchain-visual {
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(108, 92, 231, 0.15);
+        }
+
+        .blockchain-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,50 L100,50 M50,0 L50,100" stroke="rgba(255,255,255,0.1)" stroke-width="2"/><circle cx="20" cy="20" r="8" fill="rgba(255,255,255,0.3)"/><circle cx="80" cy="20" r="8" fill="rgba(255,255,255,0.3)"/><circle cx="50" cy="50" r="12" fill="rgba(255,255,255,0.4)"/><circle cx="20" cy="80" r="8" fill="rgba(255,255,255,0.3)"/><circle cx="80" cy="80" r="8" fill="rgba(255,255,255,0.3)"/></svg>');
+        }
+
+        .nodes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .node {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 184, 148, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        .node:nth-child(1) { top: 20%; left: 30%; animation-delay: 0s; }
+        .node:nth-child(2) { top: 40%; left: 70%; animation-delay: 0.4s; }
+        .node:nth-child(3) { top: 60%; left: 20%; animation-delay: 0.8s; }
+        .node:nth-child(4) { top: 70%; left: 60%; animation-delay: 1.2s; }
+        .node:nth-child(5) { top: 30%; left: 50%; animation-delay: 1.6s; }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 80px;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        /* Features Page Styles */
+        .features-hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(42, 75, 140, 0.1) 0%, rgba(108, 92, 231, 0.1) 100%);
+            text-align: center;
+        }
+
+        .features-hero h1 {
+            font-size: 48px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .features-hero p {
+            font-size: 20px;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 28px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+
+        .platform-workflow {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+
+        .workflow-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .step h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .step p {
+            color: #666;
+        }
+
+        /* About Page Styles */
+        .about-hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(0, 184, 148, 0.1) 0%, rgba(42, 75, 140, 0.1) 100%);
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 48px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .about-hero p {
+            font-size: 20px;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 17px;
+            color: #555;
+        }
+
+        .about-visual {
+            flex: 1;
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .polygon-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(130, 71, 229, 0.1);
+            color: #8247e5;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .polygon-badge i {
+            margin-right: 8px;
+        }
+
+        .mission-vision {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+
+        .mv-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .mission, .vision {
+            flex: 1;
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .mission h3, .vision h3 {
+            font-size: 28px;
+            color: var(--dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .mission h3 i {
+            color: var(--secondary);
+        }
+
+        .vision h3 i {
+            color: var(--accent);
+        }
+
+        .team-section {
+            padding: 80px 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            text-align: center;
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+        }
+
+        .member-name {
+            font-size: 22px;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .member-role {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Page Styles */
+        .contact-hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(42, 75, 140, 0.1) 100%);
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: 48px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .contact-hero p {
+            font-size: 20px;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-info h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+            color: #555;
+            font-size: 17px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .contact-detail:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .contact-detail i {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(0, 184, 148, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--secondary);
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .contact-detail.warning i {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: var(--warning);
+        }
+
+        .contact-detail.danger i {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: var(--danger);
+        }
+
+        .detail-content h4 {
+            font-size: 20px;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .detail-content p {
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        .email-highlight {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 18px;
+            word-break: break-all;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            color: var(--text);
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background-color: white;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .faq-section {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+            color: #666;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            
+            .hero-container, .about-content, .contact-container, .mv-container {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .blockchain-visual {
+                height: 300px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 15px;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .hero h1, .features-hero h1, .about-hero h1, .contact-hero h1 {
+                font-size: 36px;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+            
+            .mission, .vision {
+                padding: 30px;
+            }
+            
+            .workflow-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .step {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a class="logo" onclick="showPage('home')" style="cursor: pointer;">
+                <div class="logo-icon">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <div class="logo-text">BIT <span>Global</span></div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a onclick="showPage('home')" class="active">Home</a></li>
+                    <li><a onclick="showPage('features')">Features</a></li>
+                    <li><a onclick="showPage('about')">About</a></li>
+                    <li><a onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="cta-button connect-wallet">Connect Wallet</a>
+        </div>
+    </header>
+
+    <!-- Page Content Container -->
+    <main id="page-content">
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container hero-container">
+                    <div class="hero-content">
+                        <h1>Unlock a World of <span>Financial Possibilities</span> with BIT Global</h1>
+                        <p>BIT Global is a decentralized financial platform built on blockchain technology, empowering individuals and businesses globally through access to decentralized financial systems built on smart contracts.</p>
+                        <button class="cta-button" onclick="showPage('features')">Explore Features</button>
+                    </div>
+                    <div class="hero-image">
+                        <div class="blockchain-visual">
+                            <div class="nodes">
+                                <div class="node"></div>
+                                <div class="node"></div>
+                                <div class="node"></div>
+                                <div class="node"></div>
+                                <div class="node"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container stats">
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Decentralized</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Global Access</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">0%</div>
+                        <div class="stat-label">Intermediaries</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">Polygon</div>
+                        <div class="stat-label">Blockchain Network</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Features Section -->
+            <section class="quick-features">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Why Choose BIT Global?</h2>
+                        <p>Experience the future of finance with our decentralized platform</p>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Secure & Transparent</h3>
+                            <p>Built on secure smart contracts with transparent operations. All transactions are immutable and verifiable on the blockchain.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3>Global Access</h3>
+                            <p>Borderless financial opportunities for users worldwide. Break down barriers to business and financial access.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3>Fast & Low-Cost</h3>
+                            <p>Leverage the Polygon network for fast transactions with minimal fees compared to traditional financial systems.</p>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 50px;">
+                        <button class="cta-button" onclick="showPage('features')">View All Features</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Transparency Notice -->
+            <section style="padding: 60px 0;">
+                <div class="container">
+                    <div class="warning-note">
+                        <p><i class="fas fa-exclamation-triangle"></i> Important Notice: BIT Global lacks publicly visible business registration information. No GST number, physical address, or official documents are available on the website. Exercise caution with financial interactions.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Features Page -->
+        <div id="features-page" class="page">
+            <!-- Features Hero -->
+            <section class="features-hero">
+                <div class="container">
+                    <h1>Platform Features</h1>
+                    <p>BIT Global provides a comprehensive suite of decentralized financial services on the Polygon network. Explore our capabilities below.</p>
+                    <button class="cta-button" onclick="showPage('contact')">Get Started</button>
+                </div>
+            </section>
+
+            <!-- Features Grid -->
+            <section class="features-list">
+                <div class="container">
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-wallet"></i>
+                            </div>
+                            <h3>Wallet Integration</h3>
+                            <p>Securely connect your wallet to access decentralized financial services. Easy setup and management of funds on the Polygon blockchain.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Multi-wallet support</li>
+                                <li><i class="fas fa-check"></i> Secure private key management</li>
+                                <li><i class="fas fa-check"></i> One-click connection</li>
+                                <li><i class="fas fa-check"></i> Cross-chain compatibility</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3>Peer-to-Peer Finance</h3>
+                            <p>Enable direct financial activities without traditional intermediaries. Transparent and secure transactions between users worldwide.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Direct user-to-user transactions</li>
+                                <li><i class="fas fa-check"></i> No bank intermediaries</li>
+                                <li><i class="fas fa-check"></i> Global payment network</li>
+                                <li><i class="fas fa-check"></i> Low transaction fees</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3>Income Streams</h3>
+                            <p>Access various decentralized business models and earning opportunities through matrix systems and blockchain operations.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Multiple revenue models</li>
+                                <li><i class="fas fa-check"></i> Passive income opportunities</li>
+                                <li><i class="fas fa-check"></i> Investment platforms</li>
+                                <li><i class="fas fa-check"></i> Yield farming options</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h3>Global Access</h3>
+                            <p>Borderless financial opportunities for users worldwide. Break down barriers to business and financial access.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Available 24/7 worldwide</li>
+                                <li><i class="fas fa-check"></i> No geographical restrictions</li>
+                                <li><i class="fas fa-check"></i> Multi-language support</li>
+                                <li><i class="fas fa-check"></i> Cross-border transactions</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3>Secure & Transparent</h3>
+                            <p>Built on secure smart contracts with transparent operations. All transactions are immutable and verifiable on the blockchain.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> Smart contract security</li>
+                                <li><i class="fas fa-check"></i> Transparent transaction history</li>
+                                <li><i class="fas fa-check"></i> Immutable records</li>
+                                <li><i class="fas fa-check"></i> Regular security audits</li>
+                            </ul>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3>Fast & Low-Cost</h3>
+                            <p>Leverage the Polygon network for fast transactions with minimal fees compared to traditional financial systems.</p>
+                            <ul class="feature-list">
+                                <li><i class="fas fa-check"></i> High-speed transactions</li>
+                                <li><i class="fas fa-check"></i> Minimal network fees</li>
+                                <li><i class="fas fa-check"></i> Scalable infrastructure</li>
+                                <li><i class="fas fa-check"></i> Instant settlements</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Platform Workflow -->
+            <section class="platform-workflow">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>How It Works</h2>
+                        <p>Get started with BIT Global in four simple steps</p>
+                    </div>
+                    <div class="workflow-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h4>Connect Wallet</h4>
+                            <p>Link your crypto wallet to the platform using secure Web3 connection</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h4>Activate Account</h4>
+                            <p>Complete the activation process and verify your identity</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h4>Access Services</h4>
+                            <p>Start using decentralized financial tools and services</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <h4>Grow Assets</h4>
+                            <p>Explore income streams and investment opportunities</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Warning Section -->
+            <section style="padding: 60px 0;">
+                <div class="container">
+                    <div class="danger-note">
+                        <p><i class="fas fa-exclamation-circle"></i> Warning: BIT Global operates as a decentralized platform with no publicly visible business registration. No physical address, GST number, or official documentation is available. Users should exercise extreme caution with financial transactions.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page">
+            <!-- About Hero -->
+            <section class="about-hero">
+                <div class="container">
+                    <h1>About BIT Global</h1>
+                    <p>Discover our vision for a decentralized global financial system and learn about our mission to empower individuals worldwide.</p>
+                </div>
+            </section>
+
+            <!-- About Content -->
+            <section class="about-main">
+                <div class="container">
+                    <div class="about-content">
+                        <div class="about-text">
+                            <div class="polygon-badge">
+                                <i class="fas fa-link"></i> Built on Polygon Network
+                            </div>
+                            <h2>Our Vision</h2>
+                            <p>BIT Global presents a vision for a decentralized global financial system using smart contracts — intending to break down barriers to business and financial access worldwide.</p>
+                            <p>This decentralized platform (on Polygon blockchain) aims for financial inclusion and global business participation through secure, immutable transactions.</p>
+                            <p>Our mission is to empower individuals and businesses globally through access to decentralized financial systems built on smart contracts.</p>
+                            <p>We believe in a future where financial services are accessible to everyone, regardless of location, status, or background. By leveraging blockchain technology, we're building a more inclusive and transparent financial ecosystem.</p>
+                        </div>
+                        <div class="about-visual">
+                            <h3>Our Core Principles</h3>
+                            <div style="margin-top: 30px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                                    <div style="width: 50px; height: 50px; background-color: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 20px;">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Security First</h4>
+                                        <p>All transactions secured by blockchain technology</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                                    <div style="width: 50px; height: 50px; background-color: var(--accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 20px;">
+                                        <i class="fas fa-eye"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Transparency</h4>
+                                        <p>All operations visible on the public blockchain</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; margin-bottom: 25px;">
+                                    <div style="width: 50px; height: 50px; background-color: var(--secondary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 20px;">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Decentralization</h4>
+                                        <p>No single point of control or failure</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center;">
+                                    <div style="width: 50px; height: 50px; background-color: #fd7e14; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 20px;">
+                                        <i class="fas fa-globe-americas"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Global Access</h4>
+                                        <p>Available to anyone with internet access</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mission & Vision -->
+            <section class="mission-vision">
+                <div class="container">
+                    <div class="mv-container">
+                        <div class="mission">
+                            <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                            <p>To democratize access to financial services by leveraging blockchain technology to create a decentralized, transparent, and inclusive financial ecosystem that empowers individuals and businesses worldwide.</p>
+                            <p>We aim to eliminate traditional barriers to financial inclusion, providing tools and services that enable peer-to-peer financial activities without intermediaries.</p>
+                        </div>
+                        <div class="vision">
+                            <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                            <p>To become the leading decentralized financial platform that bridges the gap between traditional finance and blockchain technology, creating a borderless financial system accessible to everyone.</p>
+                            <p>We envision a world where financial sovereignty is a reality for all, where individuals have full control over their assets and financial decisions without relying on centralized institutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team Section -->
+            <section class="team-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Decentralized Leadership</h2>
+                        <p>BIT Global operates as a decentralized autonomous organization (DAO) with community governance</p>
+                    </div>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <div class="member-name">Anonymous Founder</div>
+                            <div class="member-role">Core Developer</div>
+                            <p>Lead architect of the BIT Global smart contract system and platform infrastructure.</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="member-name">Blockchain Dev Team</div>
+                            <div class="member-role">Development Collective</div>
+                            <p>Distributed team of blockchain developers maintaining and improving the platform.</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="member-name">Community DAO</div>
+                            <div class="member-role">Governance Body</div>
+                            <p>Token holders who participate in platform governance and decision-making.</p>
+                        </div>
+                        <div class="team-member">
+                            <div class="member-avatar">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="member-name">Security Auditors</div>
+                            <div class="member-role">Third-Party Auditors</div>
+                            <p>Independent security firms that audit smart contracts and platform security.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Warning Section -->
+            <section style="padding: 60px 0;">
+                <div class="container">
+                    <div class="warning-note">
+                        <p><i class="fas fa-exclamation-triangle"></i> Important: BIT Global operates as a decentralized platform with no physical headquarters. No business registration documents, GST number, or physical address are publicly available. The team remains pseudonymous as is common in decentralized projects.</p>
+                    </div>
+                    <div class="danger-note" style="margin-top: 20px;">
+                        <p><i class="fas fa-exclamation-circle"></i> High Risk Warning: Due to the lack of publicly verifiable business information and anonymous leadership, BIT Global presents significant risks for financial interactions. Users should conduct thorough due diligence before engaging with the platform.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact-page" class="page">
+            <!-- Contact Hero -->
+            <section class="contact-hero">
+                <div class="container">
+                    <h1>Contact BIT Global</h1>
+                    <p>Get in touch with us for inquiries, support, or partnership opportunities. Please note our contact limitations as a decentralized platform.</p>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="contact-main">
+                <div class="container">
+                    <div class="contact-container">
+                        <div class="contact-info">
+                            <h2>Contact Information</h2>
+                            <p>For inquiries and support, please reach out to us via email. We aim to respond within 24-48 hours.</p>
+                            
+                            <div class="contact-detail">
+                                <i class="fas fa-envelope"></i>
+                                <div class="detail-content">
+                                    <h4>Email Address</h4>
+                                    <p class="email-highlight">support@bitmilloxa.io</p>
+                                    <p>Primary contact method for all inquiries</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-detail warning">
+                                <i class="fas fa-phone-slash"></i>
+                                <div class="detail-content">
+                                    <h4>Phone Support</h4>
+                                    <p>No phone number is available on the website</p>
+                                    <p>Communication is limited to email only</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-detail danger">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div class="detail-content">
+                                    <h4>Physical Address</h4>
+                                    <p>No business registration address or physical location is publicly available</p>
+                                    <p>The platform operates as a decentralized entity without a physical headquarters</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-detail">
+                                <i class="fas fa-file-alt"></i>
+                                <div class="detail-content">
+                                    <h4>Business Documentation</h4>
+                                    <p>No GST number, business registration, or official document proofs are publicly available</p>
+                                    <p>The platform lacks publicly verifiable business credentials</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-form">
+                            <h2>Send a Message</h2>
+                            <form id="contactForm">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name</label>
+                                        <input type="text" id="firstName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name</label>
+                                        <input type="text" id="lastName" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <select id="subject" required>
+                                        <option value="" disabled selected>Select a subject</option>
+                                        <option value="support">Technical Support</option>
+                                        <option value="partnership">Partnership Inquiry</option>
+                                        <option value="general">General Question</option>
+                                        <option value="security">Security Concern</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" placeholder="Please include any relevant details about your inquiry..." required></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="warning-note" style="margin: 0;">
+                                        <p><i class="fas fa-exclamation-triangle"></i> Due to the decentralized nature of BIT Global, response times may vary and verification of entity legitimacy is not possible.</p>
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Frequently Asked Questions</h2>
+                        <p>Common questions about contacting and interacting with BIT Global</p>
+                    </div>
+                    <div class="faq-container">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Why is there no phone number or physical address?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>BIT Global operates as a decentralized platform without a traditional corporate structure. As such, it lacks publicly available contact information beyond the provided email address. This is common with many blockchain-based projects that prioritize decentralization over traditional business practices.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Is BIT Global a registered business?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>No publicly available business registration information, GST number, or official documentation exists for BIT Global. The platform presents itself as a decentralized entity without traditional business registration, which raises significant legitimacy concerns for financial interactions.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>How can I verify the legitimacy of BIT Global?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Due to the lack of publicly available registration information, traditional methods of business verification are not possible. Users must exercise extreme caution and conduct their own due diligence. The absence of verifiable business credentials is a significant red flag for any financial platform.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>What should I do if I have a security concern?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>You can email security concerns to support@bitmilloxa.io. However, given the anonymous nature of the platform and lack of verifiable entity information, there is no guarantee of resolution or accountability. For serious security issues, consider reporting to relevant financial authorities in your jurisdiction.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Are there alternative ways to contact the team?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>No alternative contact methods are publicly listed. The platform only provides the email address support@bitmilloxa.io. This limited contact information, combined with the lack of business registration, should be considered when evaluating whether to engage with the platform.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final Warning -->
+            <section style="padding: 60px 0;">
+                <div class="container">
+                    <div class="danger-note">
+                        <p><i class="fas fa-exclamation-circle"></i> Critical Warning: BIT Global lacks basic business transparency with no publicly available registration, physical address, or verifiable contact information beyond a single email address. These are significant red flags for any financial platform. Exercise extreme caution and conduct thorough independent research before any financial interaction.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>BIT Global</h3>
+                    <p>A decentralized financial platform built on blockchain technology (Polygon network) providing access to global financial systems.</p>
+                    <p style="margin-top: 15px; font-size: 14px;">⚠️ This platform lacks publicly visible business registration information. Exercise due diligence.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a onclick="showPage('home')">Home</a></li>
+                        <li><a onclick="showPage('features')">Features</a></li>
+                        <li><a onclick="showPage('about')">About</a></li>
+                        <li><a onclick="showPage('contact')">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a onclick="showPage('features')">Wallet Integration</a></li>
+                        <li><a onclick="showPage('features')">P2P Finance</a></li>
+                        <li><a onclick="showPage('features')">Income Streams</a></li>
+                        <li><a onclick="showPage('features')">Decentralized Business Models</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Technology</h3>
+                    <ul class="footer-links">
+                        <li><a onclick="showPage('about')">Polygon Blockchain</a></li>
+                        <li><a onclick="showPage('about')">Smart Contracts</a></li>
+                        <li><a onclick="showPage('about')">Decentralized Systems</a></li>
+                        <li><a onclick="showPage('about')">Blockchain Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 BIT Global. This is a demonstration website based on provided information. Financial interactions should be approached with caution due to lack of publicly available registration details.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page navigation function
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId + '-page').classList.add('active');
+            
+            // Update active navigation link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Set active class on clicked navigation item
+            document.querySelectorAll('nav a').forEach(link => {
+                if (link.textContent.toLowerCase() === pageId || 
+                   (pageId === 'home' && link.textContent.toLowerCase() === 'home')) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top when changing pages
+            window.scrollTo(0, 0);
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for your message. Given the contact limitations of this platform, please also consider emailing support@bitmilloxa.io directly.');
+                    contactForm.reset();
+                });
+            }
+            
+            // Set up Connect Wallet button
+            const connectWalletBtn = document.querySelector('.cta-button.connect-wallet');
+            if (connectWalletBtn) {
+                connectWalletBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Wallet connection would typically integrate with Web3 providers like MetaMask. This is a demonstration.');
+                });
+            }
+            
+            // Set up FAQ functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Initialize with home page
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
