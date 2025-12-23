@@ -206,6 +206,33 @@
             font-size: 14px;
         }
 
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-bottom-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--secondary);
+        }
+
         /* Common Section Styles */
         section {
             padding: 80px 0;
@@ -872,6 +899,124 @@
             transform: rotate(180deg);
         }
 
+        /* Legal Pages Styles (Privacy & Terms) */
+        .legal-hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(42, 75, 140, 0.1) 0%, rgba(108, 92, 231, 0.1) 100%);
+            text-align: center;
+        }
+
+        .legal-hero h1 {
+            font-size: 48px;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .legal-hero p {
+            font-size: 18px;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .legal-content {
+            background-color: white;
+            border-radius: 15px;
+            padding: 60px;
+            margin-bottom: 80px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .legal-content h2 {
+            font-size: 30px;
+            color: var(--dark);
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray);
+        }
+
+        .legal-content h3 {
+            font-size: 22px;
+            color: var(--primary);
+            margin: 30px 0 15px;
+        }
+
+        .legal-content p {
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .legal-content ul, .legal-content ol {
+            margin: 15px 0 15px 30px;
+            color: #555;
+        }
+
+        .legal-content li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .legal-content .highlight {
+            background-color: rgba(0, 184, 148, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .legal-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .legal-content th {
+            background-color: var(--light);
+            padding: 15px;
+            text-align: left;
+            border: 1px solid var(--gray);
+            font-weight: 600;
+        }
+
+        .legal-content td {
+            padding: 15px;
+            border: 1px solid var(--gray);
+        }
+
+        .update-date {
+            text-align: right;
+            color: #777;
+            font-style: italic;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+            z-index: 999;
+            display: none;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--secondary);
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .header-container {
@@ -904,6 +1049,10 @@
                 flex-direction: column;
                 gap: 0;
             }
+            
+            .legal-content {
+                padding: 40px 30px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -916,7 +1065,7 @@
                 gap: 30px;
             }
             
-            .hero h1, .features-hero h1, .about-hero h1, .contact-hero h1 {
+            .hero h1, .features-hero h1, .about-hero h1, .contact-hero h1, .legal-hero h1 {
                 font-size: 36px;
             }
             
@@ -940,6 +1089,16 @@
             
             .stat-number {
                 font-size: 36px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-bottom-links {
+                justify-content: center;
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -1513,120 +1672,576 @@
                 </div>
             </section>
         </div>
-    </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-column">
-                    <h3>BIT Global</h3>
-                    <p>A decentralized financial platform built on blockchain technology (Polygon network) providing access to global financial systems.</p>
-                    <p style="margin-top: 15px; font-size: 14px;">⚠️ This platform lacks publicly visible business registration information. Exercise due diligence.</p>
+        <!-- Privacy Policy Page -->
+        <div id="privacy-page" class="page">
+            <!-- Privacy Policy Hero -->
+            <section class="legal-hero">
+                <div class="container">
+                    <h1>Privacy Policy</h1>
+                    <p>Last Updated: November 15, 2023</p>
                 </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a onclick="showPage('home')">Home</a></li>
-                        <li><a onclick="showPage('features')">Features</a></li>
-                        <li><a onclick="showPage('about')">About</a></li>
-                        <li><a onclick="showPage('contact')">Contact</a></li>
-                    </ul>
+            </section>
+
+            <!-- Privacy Policy Content -->
+            <section class="legal-section">
+                <div class="container">
+                    <div class="legal-content">
+                        <div class="highlight">
+                            <p><strong>Important Notice:</strong> BIT Global operates as a decentralized platform on the Polygon blockchain. Due to the inherent transparency of blockchain technology, certain personal information may be publicly visible on the blockchain ledger. By using our platform, you acknowledge and accept these decentralized characteristics.</p>
+                        </div>
+
+                        <h2>1. Introduction</h2>
+                        <p>This Privacy Policy describes how BIT Global ("we," "our," or "the platform") handles information in connection with our decentralized financial platform. As a decentralized application (dApp) operating on blockchain technology, our approach to privacy differs from traditional centralized services.</p>
+
+                        <h2>2. Information We Collect</h2>
+                        <h3>2.1 Blockchain Information</h3>
+                        <p>When you interact with our smart contracts on the Polygon blockchain, the following information becomes part of the public ledger:</p>
+                        <ul>
+                            <li>Wallet addresses</li>
+                            <li>Transaction amounts and timestamps</li>
+                            <li>Smart contract interactions</li>
+                            <li>Gas fees and transaction hashes</li>
+                        </ul>
+
+                        <h3>2.2 Information You Provide Directly</h3>
+                        <p>If you contact us via email or through our contact form, we may collect:</p>
+                        <ul>
+                            <li>Email address</li>
+                            <li>Name (if provided)</li>
+                            <li>Inquiry details</li>
+                            <li>Any other information you choose to share</li>
+                        </ul>
+
+                        <h3>2.3 Automatically Collected Information</h3>
+                        <p>When you visit our website, we may collect:</p>
+                        <ul>
+                            <li>IP address</li>
+                            <li>Browser type and version</li>
+                            <li>Device information</li>
+                            <li>Usage data through cookies and similar technologies</li>
+                        </ul>
+
+                        <h2>3. How We Use Information</h2>
+                        <table>
+                            <tr>
+                                <th>Purpose</th>
+                                <th>Information Used</th>
+                            </tr>
+                            <tr>
+                                <td>Facilitating blockchain transactions</td>
+                                <td>Wallet addresses, transaction data</td>
+                            </tr>
+                            <tr>
+                                <td>Platform functionality</td>
+                                <td>Smart contract interactions</td>
+                            </tr>
+                            <tr>
+                                <td>Customer support</td>
+                                <td>Email communications</td>
+                            </tr>
+                            <tr>
+                                <td>Website improvement</td>
+                                <td>Usage analytics, cookies</td>
+                            </tr>
+                            <tr>
+                                <td>Security and fraud prevention</td>
+                                <td>IP addresses, transaction patterns</td>
+                            </tr>
+                        </table>
+
+                        <h2>4. Blockchain Transparency</h2>
+                        <p>Due to the nature of blockchain technology:</p>
+                        <ul>
+                            <li>All transactions are recorded on the public Polygon blockchain</li>
+                            <li>Wallet addresses and transaction details are permanently visible</li>
+                            <li>Once recorded, blockchain data cannot be altered or deleted</li>
+                            <li>Your wallet address may be pseudonymous but can potentially be linked to your identity through various means</li>
+                        </ul>
+
+                        <h2>5. Data Retention</h2>
+                        <h3>5.1 Blockchain Data</h3>
+                        <p>Blockchain transactions are immutable and permanent. Once recorded, they cannot be modified or deleted from the public ledger.</p>
+
+                        <h3>5.2 Website Data</h3>
+                        <p>We retain website usage data for analytical purposes for up to 12 months. Email communications are retained for as long as necessary to address your inquiries.</p>
+
+                        <h2>6. Third-Party Services</h2>
+                        <p>We may use third-party services that have their own privacy policies:</p>
+                        <ul>
+                            <li><strong>Web3 Providers:</strong> MetaMask, WalletConnect, or other wallet services</li>
+                            <li><strong>Analytics:</strong> Google Analytics or similar services</li>
+                            <li><strong>Hosting:</strong> Cloud hosting providers</li>
+                            <li><strong>Email Services:</strong> Email delivery providers</li>
+                        </ul>
+
+                        <h2>7. User Rights</h2>
+                        <p>Depending on your jurisdiction, you may have certain rights regarding your personal information:</p>
+                        <ul>
+                            <li><strong>Right to Access:</strong> Request information about what data we have</li>
+                            <li><strong>Right to Correction:</strong> Request correction of inaccurate information</li>
+                            <li><strong>Right to Deletion:</strong> Request deletion of certain data (note: blockchain data is immutable)</li>
+                            <li><strong>Right to Object:</strong> Object to certain data processing activities</li>
+                        </ul>
+                        <p>To exercise these rights, contact us at <strong>support@bitmilloxa.io</strong>.</p>
+
+                        <h2>8. Security Measures</h2>
+                        <p>While we implement reasonable security measures, please understand that:</p>
+                        <ul>
+                            <li>Blockchain transactions are secured by cryptography</li>
+                            <li>You are responsible for securing your private keys and wallet</li>
+                            <li>No system can guarantee absolute security</li>
+                            <li>We cannot prevent blockchain analysis or deanonymization techniques</li>
+                        </ul>
+
+                        <h2>9. International Data Transfers</h2>
+                        <p>As a decentralized global platform, data may be transferred and processed in various countries. By using our services, you consent to such transfers.</p>
+
+                        <h2>10. Children's Privacy</h2>
+                        <p>Our platform is not intended for individuals under 18 years of age. We do not knowingly collect personal information from children.</p>
+
+                        <h2>11. Changes to This Policy</h2>
+                        <p>We may update this Privacy Policy periodically. The "Last Updated" date at the top indicates when changes were made. Continued use of our platform constitutes acceptance of updated policies.</p>
+
+                        <h2>12. Contact Information</h2>
+                        <p>For privacy-related inquiries or to exercise your rights, contact us at:</p>
+                        <p><strong>Email:</strong> support@bitmilloxa.io</p>
+                        <p><strong>Note:</strong> As a decentralized platform, we lack traditional business registration and physical address information. All communications are electronic.</p>
+
+                        <div class="warning-note" style="margin-top: 40px;">
+                            <p><i class="fas fa-exclamation-triangle"></i> Important Disclaimer: This Privacy Policy cannot alter the fundamental transparency of blockchain technology. All blockchain transactions remain publicly visible and immutable. Users should understand these characteristics before participating in decentralized finance.</p>
+                        </div>
+
+                        <div class="update-date">
+                            <p>Last Updated: November 15, 2023</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a onclick="showPage('features')">Wallet Integration</a></li>
-                        <li><a onclick="showPage('features')">P2P Finance</a></li>
-                        <li><a onclick="showPage('features')">Income Streams</a></li>
-                        <li><a onclick="showPage('features')">Decentralized Business Models</a></li>
-                    </ul>
+            </section>
+        </div>
+
+        <!-- Terms & Conditions Page -->
+        <div id="terms-page" class="page">
+            <!-- Terms & Conditions Hero -->
+            <section class="legal-hero">
+                <div class="container">
+                    <h1>Terms & Conditions</h1>
+                    <p>Last Updated: November 15, 2023</p>
                 </div>
-                <div class="footer-column">
-                    <h3>Technology</h3>
-                    <ul class="footer-links">
-                        <li><a onclick="showPage('about')">Polygon Blockchain</a></li>
-                        <li><a onclick="showPage('about')">Smart Contracts</a></li>
-                        <li><a onclick="showPage('about')">Decentralized Systems</a></li>
-                        <li><a onclick="showPage('about')">Blockchain Security</a></li>
+            </section>
+
+            <!-- Terms & Conditions Content -->
+            <section class="legal-section">
+                <div class="container">
+                    <div class="legal-content">
+                        <div class="highlight">
+                            <p><strong>CRITICAL WARNING:</strong> BIT Global operates as a decentralized platform without traditional business registration, physical address, or verifiable entity information. These Terms contain significant risk disclosures and limitations of liability. By accessing or using our platform, you acknowledge these risks and agree to these Terms.</p>
+                        </div>
+
+                        <h2>1. Acceptance of Terms</h2>
+                        <p>By accessing or using the BIT Global platform ("Platform"), you agree to be bound by these Terms and Conditions ("Terms"). If you do not agree to these Terms, do not use the Platform.</p>
+
+                        <h2>2. Platform Description</h2>
+                        <p>BIT Global is a decentralized financial platform operating on the Polygon blockchain. The Platform:</p>
+                        <ul>
+                            <li>Provides access to decentralized financial services through smart contracts</li>
+                            <li>Operates without traditional corporate structure or registration</li>
+                            <li>Has no physical headquarters or verifiable business address</li>
+                            <li>Is maintained by pseudonymous developers and community governance</li>
+                            <li>May include peer-to-peer financial activities, income models, and investment opportunities</li>
+                        </ul>
+
+                        <h2>3. Eligibility</h2>
+                        <p>To use the Platform, you must:</p>
+                        <ul>
+                            <li>Be at least 18 years old</li>
+                            <li>Have legal capacity to enter into binding agreements</li>
+                            <li>Not be prohibited from using the Platform by applicable laws</li>
+                            <li>Understand the risks of decentralized finance and blockchain technology</li>
+                            <li>Reside in a jurisdiction where Platform services are legally permitted</li>
+                        </ul>
+
+                        <h2>4. Account and Wallet Responsibility</h2>
+                        <h3>4.1 Wallet Security</h3>
+                        <p>You are solely responsible for:</p>
+                        <ul>
+                            <li>Securing your cryptocurrency wallet and private keys</li>
+                            <li>All transactions initiated from your wallet</li>
+                            <li>Maintaining confidentiality of wallet credentials</li>
+                            <li>Any loss resulting from wallet compromise or mismanagement</li>
+                        </ul>
+
+                        <h3>4.2 No Account Recovery</h3>
+                        <p>The Platform cannot:</p>
+                        <ul>
+                            <li>Recover lost private keys or wallets</li>
+                            <li>Reverse blockchain transactions</li>
+                            <li>Access or control your funds</li>
+                            <li>Provide traditional account recovery services</li>
+                        </ul>
+
+                        <h2>5. Risk Acknowledgments</h2>
+                        <p>You acknowledge and accept the following risks:</p>
+
+                        <h3>5.1 Platform Risks</h3>
+                        <ul>
+                            <li><strong>No Business Verification:</strong> The Platform lacks publicly available business registration, GST number, or physical address</li>
+                            <li><strong>Anonymous Leadership:</strong> Platform developers and operators are pseudonymous</li>
+                            <li><strong>No Regulatory Oversight:</strong> The Platform operates outside traditional financial regulations</li>
+                            <li><strong>Limited Recourse:</strong> No legal entity exists for claims or disputes</li>
+                        </ul>
+
+                        <h3>5.2 Financial Risks</h3>
+                        <ul>
+                            <li><strong>Total Loss Risk:</strong> Possibility of complete loss of invested funds</li>
+                            <li><strong>Smart Contract Risk:</strong> Vulnerabilities in smart contract code</li>
+                            <li><strong>Market Volatility:</strong> Cryptocurrency price fluctuations</li>
+                            <li><strong>Liquidity Risk:</strong> Inability to withdraw funds when desired</li>
+                            <li><strong>Regulatory Risk:</strong> Changing legal and regulatory environments</li>
+                        </ul>
+
+                        <h3>5.3 Technical Risks</h3>
+                        <ul>
+                            <li><strong>Blockchain Risks:</strong> Network congestion, forks, or failures</li>
+                            <li><strong>Security Risks:</strong> Hacking, phishing, or other attacks</li>
+                            <li><strong>Technology Risks:</strong> Software bugs, vulnerabilities, or failures</li>
+                            <li><strong>Irreversible Transactions:</strong> Blockchain transactions cannot be reversed</li>
+                        </ul>
+
+                        <h2>6. Prohibited Activities</h2>
+                        <p>You agree not to:</p>
+                        <ul>
+                            <li>Use the Platform for illegal purposes</li>
+                            <li>Violate applicable laws or regulations</li>
+                            <li>Engage in money laundering or terrorist financing</li>
+                            <li>Manipulate markets or engage in fraudulent activities</li>
+                            <li>Infringe intellectual property rights</li>
+                            <li>Distribute malware or engage in hacking attempts</li>
+                            <li>Provide false or misleading information</li>
+                        </ul>
+
+                        <h2>7. Intellectual Property</h2>
+                        <p>The Platform's software, website content, and branding are provided "as is." No intellectual property rights are transferred through these Terms.</p>
+
+                        <h2>8. Fees and Payments</h2>
+                        <p>The Platform may charge fees for services, including:</p>
+                        <ul>
+                            <li>Transaction fees (paid to Polygon network)</li>
+                            <li>Platform usage fees</li>
+                            <li>Service fees for specific features</li>
+                        </ul>
+                        <p>All fees are non-refundable and subject to change without notice.</p>
+
+                        <h2>9. Limitation of Liability</h2>
+                        <p><strong>TO THE MAXIMUM EXTENT PERMITTED BY LAW:</strong></p>
+                        <ol>
+                            <li>The Platform is provided "as is" and "as available" without warranties</li>
+                            <li>We disclaim all warranties, express or implied</li>
+                            <li>We are not liable for any direct, indirect, incidental, or consequential damages</li>
+                            <li>Total liability is limited to the amount of fees paid by you in the last 6 months</li>
+                            <li>We are not responsible for third-party actions or blockchain network issues</li>
+                        </ol>
+
+                        <h2>10. Indemnification</h2>
+                        <p>You agree to indemnify and hold harmless the Platform, its developers, and affiliates from any claims, damages, or losses arising from your use of the Platform or violation of these Terms.</p>
+
+                        <h2>11. Governing Law and Dispute Resolution</h2>
+                        <h3>11.1 Governing Law</h3>
+                        <p>These Terms are governed by the laws of [Jurisdiction], without regard to conflict of law principles.</p>
+
+                        <h3>11.2 Dispute Resolution</h3>
+                        <p>Any
+                            <h3>11.3 Class Action Waiver</h3>
+                    <p>You waive any right to participate in class actions or consolidated claims against the Platform.</p>
+
+                    <h2>12. Platform Changes and Termination</h2>
+                    <h3>12.1 Platform Modifications</h3>
+                    <p>We may modify, suspend, or terminate the Platform at any time without notice.</p>
+
+                    <h3>12.2 Account Termination</h3>
+                    <p>We may terminate or restrict your access to the Platform for any reason, including violation of these Terms.</p>
+
+                    <h2>13. Force Majeure</h2>
+                    <p>We are not liable for failures or delays caused by events beyond our reasonable control, including:</p>
+                    <ul>
+                        <li>Blockchain network failures</li>
+                        <li>Government actions or regulations</li>
+                        <li>Natural disasters</li>
+                        <li>Cybersecurity incidents</li>
+                        <li>Technical infrastructure failures</li>
                     </ul>
+
+                    <h2>14. Third-Party Services</h2>
+                    <p>The Platform may integrate with or link to third-party services, including:</p>
+                    <ul>
+                        <li>Cryptocurrency wallets (MetaMask, WalletConnect, etc.)</li>
+                        <li>Blockchain explorers</li>
+                        <li>Analytics services</li>
+                        <li>Communication tools</li>
+                    </ul>
+                    <p>We are not responsible for third-party services and their terms apply to your use of them.</p>
+
+                    <h2>15. Tax Compliance</h2>
+                    <p>You are solely responsible for:</p>
+                    <ul>
+                        <li>Determining tax obligations in your jurisdiction</li>
+                        <li>Reporting and paying applicable taxes</li>
+                        <li>Maintaining accurate transaction records</li>
+                        <li>Complying with tax laws and regulations</li>
+                    </ul>
+
+                    <h2>16. Not Financial Advice</h2>
+                    <p><strong>IMPORTANT DISCLAIMER:</strong></p>
+                    <ol>
+                        <li>The Platform does not provide financial, investment, or legal advice</li>
+                        <li>All information is for educational and informational purposes only</li>
+                        <li>You should consult qualified professionals before making financial decisions</li>
+                        <li>Past performance does not guarantee future results</li>
+                        <li>Cryptocurrency investments are highly speculative and risky</li>
+                    </ol>
+
+                    <h2>17. Amendments to Terms</h2>
+                    <p>We may amend these Terms at any time by posting updated terms on the Platform. Continued use constitutes acceptance of amended Terms.</p>
+
+                    <h2>18. Severability</h2>
+                    <p>If any provision of these Terms is found unenforceable, the remaining provisions remain in full effect.</p>
+
+                    <h2>19. Entire Agreement</h2>
+                    <p>These Terms constitute the entire agreement between you and the Platform regarding your use of the services.</p>
+
+                    <h2>20. No Waiver</h2>
+                    <p>Our failure to enforce any provision does not constitute a waiver of that provision or any other provision.</p>
+
+                    <h2>21. Contact Information</h2>
+                    <p>For questions about these Terms, contact:</p>
+                    <p><strong>Email:</strong> support@bitmilloxa.io</p>
+                    <p><strong>Note:</strong> As a decentralized platform, we operate without traditional business infrastructure. Response times may vary, and we cannot guarantee resolution of all inquiries.</p>
+
+                    <div class="danger-note" style="margin-top: 40px;">
+                        <p><i class="fas fa-exclamation-circle"></i> <strong>CRITICAL ACKNOWLEDGMENT REQUIRED:</strong> By using the BIT Global Platform, you acknowledge that you have read, understood, and accept all risks outlined in these Terms, including the lack of business registration, anonymous leadership, and potential for total financial loss. You confirm that you are not relying on any representations or warranties beyond those expressly stated herein.</p>
+                    </div>
+
+                    <div class="warning-note" style="margin-top: 20px;">
+                        <p><i class="fas fa-exclamation-triangle"></i> <strong>REGULATORY WARNING:</strong> The Platform may not be available or legal in all jurisdictions. You are responsible for determining whether your use complies with local laws and regulations. Some jurisdictions may consider Platform activities to be unregulated or illegal financial services.</p>
+                    </div>
+
+                    <div class="update-date">
+                        <p>Last Updated: November 15, 2023</p>
+                        <p>Effective Date: November 15, 2023</p>
+                    </div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 BIT Global. This is a demonstration website based on provided information. Financial interactions should be approached with caution due to lack of publicly available registration details.</p>
+        </section>
+    </div>
+</main>
+
+<!-- Back to Top Button -->
+<div class="back-to-top" onclick="scrollToTop()">
+    <i class="fas fa-chevron-up"></i>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>BIT Global</h3>
+                <p>A decentralized financial platform built on blockchain technology (Polygon network) providing access to global financial systems.</p>
+                <p style="margin-top: 15px; font-size: 14px;">⚠️ This platform lacks publicly visible business registration information. Exercise due diligence.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a onclick="showPage('home')">Home</a></li>
+                    <li><a onclick="showPage('features')">Features</a></li>
+                    <li><a onclick="showPage('about')">About</a></li>
+                    <li><a onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a onclick="showPage('features')">Wallet Integration</a></li>
+                    <li><a onclick="showPage('features')">P2P Finance</a></li>
+                    <li><a onclick="showPage('features')">Income Streams</a></li>
+                    <li><a onclick="showPage('features')">Decentralized Business Models</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a onclick="showPage('privacy')">Privacy Policy</a></li>
+                    <li><a onclick="showPage('terms')">Terms & Conditions</a></li>
+                    <li><a onclick="showPage('contact')">Risk Disclosure</a></li>
+                    <li><a onclick="showPage('contact')">Disclaimer</a></li>
+                </ul>
             </div>
         </div>
-    </footer>
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>&copy; 2023 BIT Global. This is a demonstration website based on provided information. Financial interactions should be approached with extreme caution due to lack of publicly available registration details.</p>
+            </div>
+            <div class="footer-bottom-links">
+                <a onclick="showPage('privacy')">Privacy Policy</a>
+                <a onclick="showPage('terms')">Terms & Conditions</a>
+                <a onclick="showPage('contact')">Contact</a>
+            </div>
+        </div>
+    </div>
+</footer>
 
-    <script>
-        // Page navigation function
-        function showPage(pageId) {
-            // Hide all pages
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Show selected page
-            document.getElementById(pageId + '-page').classList.add('active');
-            
-            // Update active navigation link
+<script>
+    // Page navigation function
+    function showPage(pageId) {
+        // Hide all pages
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+        });
+        
+        // Show selected page
+        const selectedPage = document.getElementById(pageId + '-page');
+        if (selectedPage) {
+            selectedPage.classList.add('active');
+        } else {
+            document.getElementById('home-page').classList.add('active');
+        }
+        
+        // Update active navigation link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.classList.remove('active');
+        });
+        
+        // Set active class on clicked navigation item
+        document.querySelectorAll('nav a').forEach(link => {
+            if (link.textContent.toLowerCase() === pageId || 
+               (pageId === 'home' && link.textContent.toLowerCase() === 'home')) {
+                link.classList.add('active');
+            }
+        });
+        
+        // For legal pages, set no active nav item
+        if (pageId === 'privacy' || pageId === 'terms') {
             document.querySelectorAll('nav a').forEach(link => {
                 link.classList.remove('active');
             });
-            
-            // Set active class on clicked navigation item
-            document.querySelectorAll('nav a').forEach(link => {
-                if (link.textContent.toLowerCase() === pageId || 
-                   (pageId === 'home' && link.textContent.toLowerCase() === 'home')) {
-                    link.classList.add('active');
-                }
-            });
-            
-            // Scroll to top when changing pages
-            window.scrollTo(0, 0);
         }
         
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set up form submission
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('Thank you for your message. Given the contact limitations of this platform, please also consider emailing support@bitmilloxa.io directly.');
-                    contactForm.reset();
-                });
-            }
-            
-            // Set up Connect Wallet button
-            const connectWalletBtn = document.querySelector('.cta-button.connect-wallet');
-            if (connectWalletBtn) {
-                connectWalletBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('Wallet connection would typically integrate with Web3 providers like MetaMask. This is a demonstration.');
-                });
-            }
-            
-            // Set up FAQ functionality
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                question.addEventListener('click', () => {
-                    // Close all other items
-                    faqItems.forEach(otherItem => {
-                        if (otherItem !== item && otherItem.classList.contains('active')) {
-                            otherItem.classList.remove('active');
-                        }
-                    });
-                    
-                    // Toggle current item
-                    item.classList.toggle('active');
-                });
-            });
-            
-            // Initialize with home page
-            showPage('home');
+        // Scroll to top when changing pages
+        window.scrollTo(0, 0);
+        
+        // Hide back to top button
+        document.querySelector('.back-to-top').style.display = 'none';
+    }
+    
+    // Scroll to top function
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
-    </script>
+    }
+    
+    // Show/hide back to top button
+    window.addEventListener('scroll', function() {
+        const backToTopButton = document.querySelector('.back-to-top');
+        if (window.scrollY > 300) {
+            backToTopButton.style.display = 'flex';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
+    });
+    
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set up form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message. Given the contact limitations of this platform, please also consider emailing support@bitmilloxa.io directly.');
+                contactForm.reset();
+            });
+        }
+        
+        // Set up Connect Wallet button
+        const connectWalletBtn = document.querySelector('.cta-button.connect-wallet');
+        if (connectWalletBtn) {
+            connectWalletBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Wallet connection would typically integrate with Web3 providers like MetaMask. This is a demonstration.');
+            });
+        }
+        
+        // Set up FAQ functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Check URL for page parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const pageParam = urlParams.get('page');
+        if (pageParam && ['home', 'features', 'about', 'contact', 'privacy', 'terms'].includes(pageParam)) {
+            showPage(pageParam);
+        } else {
+            showPage('home');
+        }
+        
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Add legal page links in footer to navigation
+        const legalLinks = document.querySelectorAll('.footer-links a, .footer-bottom-links a');
+        legalLinks.forEach(link => {
+            if (link.getAttribute('onclick') && link.getAttribute('onclick').includes('showPage')) {
+                // Already has onclick handler
+            } else {
+                const pageName = link.textContent.toLowerCase().replace(/ /g, '-');
+                if (['privacy-policy', 'terms-conditions'].includes(pageName)) {
+                    const actualPageName = pageName === 'privacy-policy' ? 'privacy' : 'terms';
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        showPage(actualPageName);
+                    });
+                }
+            }
+        });
+    });
+    
+    // Print functionality for legal pages
+    function printPage() {
+        window.print();
+    }
+    
+    // Download Terms as PDF (simulated)
+    function downloadTermsPDF() {
+        alert('Terms & Conditions PDF download would be available here. This is a demonstration.');
+    }
+</script>
 </body>
 </html>
